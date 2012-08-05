@@ -7,16 +7,14 @@ require "fast_seeder/version"
 Gem::Specification.new do |s|
   s.name        = "fast_seeder"
   s.version     = FastSeeder::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of FastSeeder."
-  s.description = "TODO: Description of FastSeeder."
+  s.authors     = ["Sergey Potapov"]
+  s.email       = ["blake131313@gmail.com"]
+  s.homepage    = "https://github.com/greyblake/fast_seeder"
+  s.summary     = "Speeds up seeding database using multiple SQL inserts"
+  s.description = "Speeds up seeding database using multiple SQL inserts"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{lib}/**/*"] + ["LGPL-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.7"
-
-  s.add_development_dependency "sqlite3"
+  s.add_dependency "rails", "~> 3.0"
 end
