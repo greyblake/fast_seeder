@@ -2,7 +2,7 @@
 
 By [Sergey Potapov](https://github.com/greyblake)
 
-Speeds up seeding database using multiple SQL inserts!
+Speed up seeding database using multiple SQL inserts!
 
 ## Installation
 
