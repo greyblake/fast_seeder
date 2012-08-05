@@ -14,4 +14,5 @@ group :development, :test do
   gem 'pg'
   gem 'mysql'
   gem 'mysql2'
+  gem 'sqlite3'
 end
