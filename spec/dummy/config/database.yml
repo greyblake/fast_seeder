@@ -1,25 +1,60 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+<% if ENV['FAST_SEEDER_ADAPTER'] == 'mysql' %>
+development:
+  adapter: mysql
+  database: fast_seeder_development
+  username: root
+  encoding: utf8
+
+test:
+  adapter: mysql
+  database: fast_seeder_test
+  username: root
+  encoding: utf8
+
+
+<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'mysql2' %>
+development:
+  adapter: mysql2
+  database: fast_seeder_development
+  username: root
+  encoding: utf8
+
+test:
+  adapter: mysql2
+  database: fast_seeder_test
+  username: root
+  encoding: utf8
+
+
+<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'sqlite3' %>
 development:
   adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+  database: "db/development.sqlite"
+  timeout: 500
 test:
   adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+  database: "db/test.sqlite"
+  timeout: 500
 
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+
+<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'postgresql' %>
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: fast_seeder_development
   pool: 5
-  timeout: 5000
+  username: postgres
+  password: secret
+  host: localhost
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: fast_seeder_test
+  pool: 5
+  username: postgres
+  password: secret
+  host: localhost
+
+<% else %>
+  <% raise "FAST_SEEDER_ADAPTER environment variable should be specified with one of: mysql, mysql2, sqlite3, postgresql" %>
+<% end %>

@@ -5,5 +5,13 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'rspec'
-gem 'rspec-rails'
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'pry'
+
+  gem 'pg'
+  gem 'mysql'
+  gem 'mysql2'
+end

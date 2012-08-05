@@ -5,6 +5,9 @@ rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
+APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
+
 Bundler::GemHelper.install_tasks
 
 require 'rspec/core'
@@ -13,3 +16,46 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 task :default => :spec
+
+
+Rake::Task[:spec].enhance ['db:setup']
+
+
+namespace :spec do
+
+  desc "run specs with postgresql adapter"
+  task :postgresql do
+    ENV['FAST_SEEDER_ADAPTER'] = 'postgresql'
+    Rake::Task[:spec].invoke
+  end
+
+  desc "run specs with mysql adapter"
+  task :mysql do
+    ENV['FAST_SEEDER_ADAPTER'] = 'mysql'
+    Rake::Task[:spec].invoke
+  end
+
+  desc "run specs with mysql2 adapter"
+  task :mysql2 do
+    ENV['FAST_SEEDER_ADAPTER'] = 'mysql2'
+    Rake::Task[:spec].invoke
+  end
+
+  desc "run specs with sqlite3 adapter"
+  task :sqlite3 do
+    ENV['FAST_SEEDER_ADAPTER'] = 'sqlite3'
+    Rake::Task[:spec].invoke
+  end
+
+  desc "run specs with all supported adapters"
+  task :all do
+    adapters = %w(postgresql mysql mysql2 sqlite3)
+    adapters.each do |adapter|
+      puts "=" * 80
+      puts adapter.center(80)
+      puts "=" * 80
+      system "rake spec:#{adapter}"
+    end
+  end
+end
+
