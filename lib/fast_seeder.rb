@@ -1,4 +1,5 @@
 require 'csv'
+require 'active_support/all'
 
 module FastSeeder
   extend self

@@ -4,7 +4,9 @@ module FastSeeder
       def initialize(model_class, declared_columns, default_values)
 	@model_class      = model_class
 	@declared_columns = declared_columns
-	@default_values   = ActiveSupport::OrderedHash[default_values]
+
+        # Ordered hash is necessary to not mess columns and wrong values
+	@default_values = ActiveSupport::OrderedHash[*default_values.to_a.flatten]
       end
 
       def seed!

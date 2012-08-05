@@ -1,4 +1,4 @@
-<% if ENV['FAST_SEEDER_ADAPTER'] == 'mysql' %>
+<% if ENV['ADAPTER'] == 'mysql' %>
 development:
   adapter: mysql
   database: fast_seeder_development
@@ -12,7 +12,7 @@ test:
   encoding: utf8
 
 
-<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'mysql2' %>
+<% elsif ENV['ADAPTER'] == 'mysql2' %>
 development:
   adapter: mysql2
   database: fast_seeder_development
@@ -26,18 +26,18 @@ test:
   encoding: utf8
 
 
-<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'sqlite3' %>
+<% elsif ENV['ADAPTER'] == 'sqlite3' %>
 development:
   adapter: sqlite3
-  database: "db/development.sqlite"
+  database: "db/development.sqlite3"
   timeout: 500
 test:
   adapter: sqlite3
-  database: "db/test.sqlite"
+  database: "db/test.sqlite3"
   timeout: 500
 
 
-<% elsif ENV['FAST_SEEDER_ADAPTER'] == 'postgresql' %>
+<% elsif ENV['ADAPTER'] == 'postgresql' %>
 development:
   adapter: postgresql
   encoding: unicode
@@ -56,5 +56,5 @@ test:
   host: localhost
 
 <% else %>
-  <% raise "FAST_SEEDER_ADAPTER environment variable should be specified with one of: mysql, mysql2, sqlite3, postgresql" %>
+  <% raise "ADAPTER environment variable should be specified with one of: mysql, mysql2, sqlite3, postgresql" %>
 <% end %>

@@ -15,35 +15,31 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
-task :default => :spec
-
 
 Rake::Task[:spec].enhance ['db:setup']
 
-
 namespace :spec do
-
   desc "run specs with postgresql adapter"
   task :postgresql do
-    ENV['FAST_SEEDER_ADAPTER'] = 'postgresql'
+    ENV['ADAPTER'] = 'postgresql'
     Rake::Task[:spec].invoke
   end
 
   desc "run specs with mysql adapter"
   task :mysql do
-    ENV['FAST_SEEDER_ADAPTER'] = 'mysql'
+    ENV['ADAPTER'] = 'mysql'
     Rake::Task[:spec].invoke
   end
 
   desc "run specs with mysql2 adapter"
   task :mysql2 do
-    ENV['FAST_SEEDER_ADAPTER'] = 'mysql2'
+    ENV['ADAPTER'] = 'mysql2'
     Rake::Task[:spec].invoke
   end
 
   desc "run specs with sqlite3 adapter"
   task :sqlite3 do
-    ENV['FAST_SEEDER_ADAPTER'] = 'sqlite3'
+    ENV['ADAPTER'] = 'sqlite3'
     Rake::Task[:spec].invoke
   end
 
@@ -59,3 +55,5 @@ namespace :spec do
   end
 end
 
+
+task :default => 'spec:all'

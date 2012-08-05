@@ -47,8 +47,8 @@ describe FastSeeder do
 
     context 'with timestamps as default values' do
       it 'populates with timestamps as well' do
-        created_time = Time.new(2010, 1, 1, 0, 0, 0)
-        updated_time = Time.new(2011, 2, 4, 4, 30, 0)
+        created_time = Time.zone.parse("2010-01-01 00:00:00")
+        updated_time = Time.zone.parse("2011-05-12 04:30:00")
 
         FastSeeder.seed_csv!(Book, @csv_file, :name, :published_in, :created_at => created_time, :updated_at => updated_time)
 
