@@ -2,6 +2,9 @@ module FastSeeder
   module Adapters
     extend ActiveSupport::Autoload
 
-    autoload :PgAdapter
+    autoload :PostgresqlAdapter
+    autoload :MysqlAdapter
+    autoload :SqliteAdapter
+    autoload :BaseAdapter
   end
 end

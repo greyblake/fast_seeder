@@ -14,7 +14,7 @@ module FastSeeder
 	specific_values.each do |record_vals|
 	  record_set << merged_values_for(record_vals)
 	end
-	adapter = SqlAdapter.new(conn, record_set)
+	adapter = adapter_class.new(conn, record_set)
 	adapter.insert!
       end
 
@@ -31,6 +31,15 @@ module FastSeeder
 
       def merged_values_for(specific_vals)
 	specific_vals + @default_values.values
+      end
+
+      def adapter_class
+	case conn.adapter_name
+	when "PostgreSQL"      then Adapters::PostgresqlAdapter
+	when "Mysql2", "MySQL" then Adapters::MysqlAdapter
+	when "SQLite"          then Adapters::SqliteAdapter
+	else raise("Unsupported connection adapter: #{conn.adapter_name}")
+	end
       end
 
       def conn

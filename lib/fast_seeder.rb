@@ -6,7 +6,7 @@ module FastSeeder
   extend ActiveSupport::Autoload
 
   autoload :Seeders
-  autoload :SqlAdapter
+  autoload :Adapters
   autoload :RecordSet
 
 
