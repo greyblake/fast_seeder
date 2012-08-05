@@ -1,5 +1,5 @@
 language: ruby
-script: rake spec:all
+script: rake spec
 before_script:
   - psql -c 'create database fast_seeder_test;' -U postgres
   - mysql -e 'create database fast_seeder_test;'
