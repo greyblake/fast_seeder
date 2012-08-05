@@ -8,10 +8,8 @@ Speeds up seeding database using multiple SQL inserts!
 
 Add to Gemfile:
 
-```ruby Gemfile
-
+```ruby
 gem "fast_seeder"
-
 ```
 
 
