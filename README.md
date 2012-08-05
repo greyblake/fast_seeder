@@ -36,13 +36,13 @@ Technically it equals to:
 
 ```ruby
 City.create(:name => "Kharkov", :founded_in => 1654, :country => "Ukraine")
-City.create(:name => "Lviv"   , :founded_in => 1240, :country => "Lviv")
-City.create(:name => "Kiev"   , :founded_in => 600 , :country => "Lviv")
+City.create(:name => "Lviv"   , :founded_in => 1240, :country => "Ukraine")
+City.create(:name => "Kiev"   , :founded_in => 600 , :country => "Ukraine")
 ```
 
 But does the job faster using only one SQL query instead of three.
-As you noticed you should pass to it model class, path to CSV file(located in `db/seeds`),
-list of CSV columns, and default values.
+As you also noticed it expects you to pass model class, path to CSV file(located in `db/seeds`),
+CSV columns, and default values.
 
 ### Seeding in place
 
