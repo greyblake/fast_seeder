@@ -8,16 +8,18 @@ describe FastSeeder do
 
 
   describe '.seed_csv!' do
-    before do
+    before :all do
       file = Tempfile.new('books')
       file.write(
         "Crime and Punishment,1866\n" \
         "The Idiot,1868\n"
       )
       file.close
+      @seeds_path, @csv_file = File.dirname(file.path), File.basename(file.path)
+    end
 
-      seeds_path, @csv_file = File.dirname(file.path), File.basename(file.path)
-      FastSeeder.stub(:seeds_path => seeds_path)
+    before do
+      FastSeeder.stub(:seeds_path => @seeds_path)
     end
 
 
@@ -95,6 +97,13 @@ describe FastSeeder do
         idiot_book.author.should == "Dostoyevsky F.M."
         crime_book.author.should == "Dostoyevsky F.M."
       end
+    end
+  end
+
+  context 'no block is passed' do
+    it 'raises error' do
+      expect { FastSeeder.seed!(Book, :name) }.
+        to raise_error(FastSeeder::Error, "`FastSeeder.seed!` requires a block to be passed")
     end
   end
 end
