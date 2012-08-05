@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     fast_seeder (0.0.1)
-      rails (~> 3.2.7)
+      rails (~> 3.0)
 
 GEM
   remote: http://rubygems.org/
