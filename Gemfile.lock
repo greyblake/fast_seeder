@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fast_seeder (0.0.2)
+    fast_seeder (0.1.0)
       rails (~> 4.0)
 
 GEM

@@ -1,8 +1,8 @@
-# FastSeeder [![Build Status](https://secure.travis-ci.org/smartdict/smartdict-core.png)](http://travis-ci.org/greyblake/fast_seeder)
+# FastSeeder [![Build Status](https://secure.travis-ci.org/greyblake/fast_seeder.png)](http://travis-ci.org/greyblake/fast_seeder)
 
 By [Sergey Potapov](https://github.com/greyblake)
 
-Speed up seeding database using multiple SQL inserts!
+Speed up seeding database in Rails application using multiple SQL inserts!
 
 ## Installation
 
@@ -73,6 +73,15 @@ rake spec:mysql2            # run specs with mysql2 adapter
 rake spec:postgresql        # run specs with postgresql adapter
 rake spec:sqlite3           # run specs with sqlite3 adapter
 ```
+
+## Rails 3
+
+Gemfile:
+
+```ruby
+gem "fast_seeder", "0.0.2"
+```
+
 
 ## Credits
 
