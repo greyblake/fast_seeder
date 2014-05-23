@@ -16,12 +16,14 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-Rake::Task[:spec].enhance ['db:setup']
+task 'db:rebuild' => ['db:drop', 'db:create', 'db:migrate', 'db:seed']
+Rake::Task[:spec].enhance ['db:rebuild', 'app:db:test:prepare']
 
 namespace :spec do
   desc "run specs with postgresql adapter"
   task :postgresql do
     ENV['ADAPTER'] = 'postgresql'
+    ENV['RAILS_ENV'] = 'test'
     Rake::Task[:spec].invoke
   end
 

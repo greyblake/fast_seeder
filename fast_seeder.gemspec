@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Speeds up seeding database using multiple SQL inserts"
 
   s.files = Dir["{lib}/**/*"] + ["LGPL-LICENSE", "Rakefile", "README.md"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 3.0"
+  s.add_dependency "rails", "~> 4.0"
 end
