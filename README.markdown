@@ -4,6 +4,12 @@ By [Sergey Potapov](https://github.com/greyblake)
 
 Speed up seeding database in Rails application using multiple SQL inserts!
 
+
+## Deprecation
+
+The project is deprecated and no longer supported.
+Please consider using [activerecord-import](https://github.com/zdennis/activerecord-import) instead.
+
 ## Installation
 
 Add to Gemfile:
